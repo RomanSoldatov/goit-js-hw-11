@@ -2,6 +2,10 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const gallery = document.querySelector('.gallery');
+const modalLightboxGallery = new SimpleLightbox('.gallery a', {
+  captionDelay: 250,
+  captionsData: 'alt',
+});
 
 export function createMarkup(data) {
   data.hits.forEach(image => {
@@ -20,11 +24,7 @@ export function createMarkup(data) {
     `;
     gallery.appendChild(photoCard);
   });
-  const options = {
-    captionsData: 'alt',
-    captionDelay: 250,
-  };
-  new SimpleLightbox('.gallery a', options);
+  modalLightboxGallery.refresh();
 
   // Цей код дозволяє автоматично прокручувати сторінку на висоту 2 карток галереї, коли вона завантажується
   const { height: cardHeight } = document

@@ -15,6 +15,7 @@ let page = 1;
 
 async function handleSearch(event) {
   event.preventDefault();
+  page = 1;
   btnLoadMore.style.visibility = 'hidden';
   gallery.innerHTML = '';
   const data = await getImages(page);
